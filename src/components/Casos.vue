@@ -11,11 +11,16 @@
         Bairro: {{bairro}}
       </section>-->
 
-      <section class="infos">
-        <div><h1>43.079</h1></div>
-        <div><h1>43.079</h1></div>
-        <div><h1>43.079</h1></div>
-      </section>
+      <div class="infos">
+        <div>
+          <p>Casos Confirmados</p>
+          <h1>{{totalCasos}}</h1>
+        </div>
+        <div>
+          <p>Óbitos</p>
+          <h1>{{totalObitos}}</h1>
+        </div>
+      </div>
 
       <ul class="casos">
         <li v-for="(caso, index) in casos" :key="index">
@@ -32,13 +37,15 @@
 import { api, getCep } from "@/services.js";
 
 export default {
-  name: 'HelloWorld',
+  name: 'Casos',
   data() {
     return {
       cep: '',
       bairro: '',
       casos: null,
-      listCasos: []
+      valores: '',
+      totalCasos: '',
+      totalObitos: ''
     };
   },
   methods: {
@@ -50,35 +57,49 @@ export default {
         })
       }
     },
-    buscarCasos() {
+    getCasos() {
       api.get(`/bairros`).then(r => {
         this.casos = r.data;
-        this.listCasos.push(this.casos);
       });
-      console.log(this.listCasos);
-      const obj = this.listCasos.find(obj => obj.id === "03");
-      console.log(`Find: ${obj}`)
     },
+    getValorMax() {
+      let sumCasos = 0;
+      let sumObitos = 0;
+      for(let i = 0; i < this.casos.length; i++){
+        this.valores = this.casos[i].casos;
+        sumCasos = sumCasos + this.casos[i].casos;
+        sumObitos = sumObitos + this.casos[i].obitos;
+      }
+      this.totalCasos = sumCasos.toLocaleString();
+      this.totalObitos = sumObitos.toLocaleString();
+    }
   },
   created() {
-    this.buscarCasos();
+    this.getCasos();
+  },
+  beforeUpdate() {
+    this.getValorMax();
   }
 }
 </script>
 
 <style scoped>
 .wrapper {
-   margin-right: auto; /* 1 */
-   margin-left:  auto; /* 1 */
-   max-width: 960px; /* 2 */
-   padding-right: 10px; /* 3 */
-   padding-left:  10px; /* 3 */
+   max-width: 960px;
+   margin-right:auto; 
+   margin-left: auto;
+   padding-right: 10px;
+   padding-left: 10px;
 }
 
 .casos, .infos {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+.infos {
+  justify-content: space-around;
 }
 
 .infos div {
