@@ -1,6 +1,5 @@
 <template>
   <section>
-    <header></header>
     <div class="wrapper">
       <!--<form>
         <label for="cep">Cep</label>
@@ -12,23 +11,29 @@
       </section>-->
 
       <div class="infos">
-        <div>
-          <p>Casos Confirmados</p>
-          <h1>{{totalCasos}}</h1>
-        </div>
-        <div>
-          <p>Óbitos</p>
-          <h1>{{totalObitos}}</h1>
-        </div>
+        <h2>Infos</h2>
+        <section class="infos-content">
+          <div>
+            <p>Casos Confirmados</p>
+            <h1>{{totalCasos}}</h1>
+          </div>
+          <div>
+            <p>Óbitos</p>
+            <h1>{{totalObitos}}</h1>
+          </div>
+        </section>
       </div>
 
-      <ul class="casos">
-        <li v-for="(caso, index) in casos" :key="index">
-          <p><span>Bairro:</span> {{caso.bairro}}</p>
-          <p><span>Casos:</span> {{caso.casos}}</p>
-          <p><span>Óbitos:</span> {{caso.obitos}}</p>
-        </li>
-      </ul>
+      <div class="casos">
+        <h2>Casos</h2>
+        <ul class="casos-content">
+          <li v-for="(caso, index) in casos" :key="index">
+            <p><span>Bairro:</span> {{caso.bairro}}</p>
+            <p><span>Casos:</span> {{caso.casos}}</p>
+            <p><span>Óbitos:</span> {{caso.obitos}}</p>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 </template>
@@ -93,20 +98,29 @@ export default {
 }
 
 .casos, .infos {
+  margin-top: 20px;
+}
+
+h2 {
+  margin-bottom: 12px;
+  color: #706fd3
+}
+
+.casos-content, .infos-content {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.infos {
-  justify-content: space-around;
+.infos-content {
+  justify-content: space-between;
 }
 
 .infos div {
-  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 22px 12px;
   width: 215px;
-  border-radius: 16px;
+  border-radius: 4px;
   background: #fff;
   border: 1px solid #dbe9f5;
   box-shadow: 0 4px 6px 0 rgba(31,70,88,.04);
@@ -118,11 +132,15 @@ export default {
   font-size: 40px;
   line-height: 48px;
   letter-spacing: -1.29px;
-  color: blueviolet;
+}
+
+.infos div p {
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .casos li {
-  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 22px 0 22px 12px;
   width: 215px;
   border-radius: 4px;
@@ -171,5 +189,14 @@ form {
   top: 0px;
   right: 0px;
   box-shadow: none;
+}
+
+@media only screen and (max-width: 768px) {
+ .infos div, .casos li {
+   width: 100%;
+ }
+ .casos li:last-child {
+   text-align: left;
+ }
 }
 </style>

@@ -1,6 +1,14 @@
 <template>
   <div id="app">
+    <header>
+      <div><h1>Covid-19 | São Paulo</h1></div>
+      <div><p>Última Atualização: 17/04/2020</p></div>
+    </header>
     <Casos />
+    <footer>
+      <p>Os dados são coletados a partir do mapa divulgado pela Prefeitura Municipal de São Paulo</p>
+      <a href="https://github.com/GuiiHenriq" target="_blank">Guilherme Henrique</a>
+    </footer>
   </div>
 </template>
 
@@ -16,40 +24,67 @@ export default {
 </script>
 
 <style>
+/* FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&display=swap');
-
-* {
-  box-sizing: border-box;
+@font-face {
+  font-family: 'Archive';
+  src: url('fonts/archive.otf');
 }
+
+/* RESET */
+* {box-sizing: border-box;}
 
 body,
 ul,
 li,
 h1,
 h2,
-p {
-  padding: 0px;
-  margin: 0px;
+p {padding: 0px;margin: 0px;}
+
+ul {list-style: none;}
+
+body {font-family: "Nunito", Helvetica, Arial, sans-serif;color: #345;background: url("./assets/pattern.svg") repeat top;}
+
+a {color: #345;text-decoration: none;}
+
+img {max-width: 100%;display: block;}
+
+
+header, footer {
+  background: #fff;
+  width: 100%;
+  height: 8vh;
+  box-shadow: 0 4px 8px rgba(30, 60, 90, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-ul {
-  list-style: none;
+header h1 {
+  font-family: "Archive", Helvetica, Arial, sans-serif;
+  font-weight: normal;
 }
 
-body {
-  font-family: "Nunito", Helvetica, Arial, sans-serif;
-  color: #345;
-  background: url("./assets/pattern.svg") repeat top;
+header p {
+  color: #a5b1c2;
+  font-weight: bold;
 }
 
-a {
-  color: #345;
-  text-decoration: none;
+footer {
+  box-shadow: 0px -4px 8px rgba(30, 60, 90, 0.1);
+  height: 10vh;
 }
 
-img {
-  max-width: 100%;
-  display: block;
+footer p {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+footer a {
+  text-decoration: underline;
+  font-size: 18px;
+  margin-top: 8px;
 }
 
 .btn {
@@ -113,21 +148,14 @@ textarea:focus {
   border-color: #87f;
 }
 
-.v-enter,
-.v-leave-to {
-  opacity: 0;
-}
+@media only screen and (max-width: 768px) {
+  header h1 {
+    font-size: 26px;
+  }
 
-.v-enter {
-  transform: translate3d(0, -20px, 0);
-}
-
-.v-leave-to {
-  transform: translate3d(0, 20px, 0);
-}
-
-.v-enter-active,
-.v-leave-active {
-  transition: all 0.3s;
+  footer p{
+    text-align: center;
+    font-size: 16px;
+  }
 }
 </style>
