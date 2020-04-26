@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: "http://suegoi0x.srv-45-34-12-247.webserverhost.top"
+  baseURL: "https://covid19-sp.netlify.app"
 });
 
 export const api = {
