@@ -45,9 +45,11 @@ ul {list-style: none;}
 
 body {font-family: "Nunito", Helvetica, Arial, sans-serif;color: #345;background: url("./assets/pattern.svg") repeat top;}
 
+button {border: none;background: none;}
+
 a {color: #345;text-decoration: none;}
 
-img {max-width: 100%;display: block;}
+/*img {max-width: 100%;display: block;}*/
 
 
 header, footer {
@@ -117,10 +119,6 @@ footer a {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-}
-
-#main {
-  flex: 1;
 }
 
 label {

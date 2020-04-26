@@ -1,15 +1,6 @@
 <template>
   <section>
     <div class="wrapper">
-      <!--<form>
-        <label for="cep">Cep</label>
-        <input id="cep" name="cep" type="text" v-model="cep" @keyup="buscarCep">
-      </form>
-
-      <section>
-        Bairro: {{bairro}}
-      </section>-->
-
       <div class="infos">
         <h2>Infos</h2>
         <section class="infos-content">
@@ -24,13 +15,39 @@
         </section>
       </div>
 
+      <!--<form>
+        <label for="cep">Cep</label>
+        <input id="cep" name="cep" type="text" v-model="cep" @keyup="buscarCep">
+      </form>
+
+      <section>
+        Bairro: {{bairro}}
+      </section>-->
+
       <div class="casos">
-        <h2>Casos</h2>
-        <ul class="casos-content"> 
+        <div>
+          <h2>Casos</h2>
+          <button @click="changeView = false" class="active"><img src="../assets/table.svg" alt="Visualizar no modo Cards"></button>
+          <button @click="changeView = true"><img src="../assets/list.svg" alt="Visualizar no modo Lista"></button>
+        </div>
+        <ul class="casos-content" v-if="changeView === false">
           <li v-for="(caso, index) in casos" :key="index">
             <p><span>Bairro:</span> {{caso.bairro}}</p>
             <p><span>Casos:</span> {{caso.casos}}</p>
             <p><span>Óbitos:</span> {{caso.obitos}}</p>
+          </li>
+        </ul>
+
+        <ul class="casos-content-list" v-else>
+          <section class="list-head">
+            <li><p><span>Bairro</span></p></li>
+            <li><p><span>Casos</span></p></li>
+            <li><p><span>Óbitos</span></p></li>
+          </section>
+          <li v-for="(caso, index) in casos" :key="index" class="list-infos">
+            <p>{{caso.bairro}}</p>
+            <p>{{caso.casos}}</p>
+            <p>{{caso.obitos}}</p>
           </li>
         </ul>
       </div>
@@ -50,7 +67,8 @@ export default {
       casos: null,
       valores: '',
       totalCasos: '',
-      totalObitos: ''
+      totalObitos: '',
+      changeView: false
     };
   },
   methods: {
@@ -63,8 +81,9 @@ export default {
       }
     },
     getCasos() {
-      api.get(`/covid19.json`).then(r => {
-        this.casos = r.data.bairros;
+      api.get(`covid19.json`).then(r => {
+        //this.casos = r.data.bairros;
+        this.casos = r.data;
       });
     },
     getValorMax() {
@@ -139,7 +158,30 @@ h2 {
   font-size: 18px;
 }
 
-.casos li {
+.casos div {
+  display: flex;
+}
+
+.casos button {
+  margin-bottom: 12px;
+}
+
+.casos button.active img {
+  color: #706fd3;
+}
+
+.casos img {
+  display: block;
+  width: 34px;
+  cursor: pointer;
+}
+
+.casos button:last-child img {
+  width: 40px;
+}
+
+/* Table/Cards */
+.casos-content li {
   margin-bottom: 20px;
   padding: 22px 0 22px 12px;
   width: 215px;
@@ -159,6 +201,56 @@ h2 {
 
 .casos li span {
   font-weight: bold;
+}
+
+/* List */
+.casos-content-list {
+  max-height: 600px;
+  overflow: auto;
+  margin-bottom: 60px;
+}
+
+.casos-content-list li:last-child {
+  margin: 0;
+}
+
+.list-head {
+  display: flex;
+  padding: 10px;
+  margin-bottom: 15px;
+  background: #fff;
+  box-shadow: 0 4px 6px 0 rgba(31,70,88,.04);
+}
+
+.list-head li {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  width: 100%;
+  margin: 0 !important;
+  font-size: 20px;
+}
+
+.list-infos {
+  width: 100%;
+  border-radius: 0;
+  margin: 0;
+  padding: 10px;
+  box-shadow: 0 4px 6px 0 rgba(31,70,88,.04);
+  background: #fff;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.list-infos:nth-child(odd) {
+  background: #f7f7f7;
+}
+
+.casos-content-list .list-infos p {
+  width: 100%;
+  text-align: center;
 }
 
 form {
