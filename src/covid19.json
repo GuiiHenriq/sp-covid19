@@ -1,0 +1,634 @@
+{
+  "usuarios": [
+    {
+      "id": 4,
+      "bairro": "Brasilândia",
+      "zona":  "Norte",
+      "casos": 89,
+      "obitos": 54
+    },
+    {
+      "id": 5,
+      "bairro": "Cachoeirinha",
+      "zona":  "Norte",
+      "casos": 69,
+      "obitos": 29
+    },
+    {
+      "id": 6,
+      "bairro": "Mandaqui",
+      "zona":  "Norte",
+      "casos": 80,
+      "obitos": 21
+    },
+    {
+      "id": 7,
+      "bairro": "Tremembé",
+      "zona":  "Norte",
+      "casos": 71,
+      "obitos": 31
+    },
+    {
+      "id": 8,
+      "bairro": "Jaçanã",
+      "zona":  "Norte",
+      "casos": 27,
+      "obitos": 17
+    },
+    {
+      "id": 9,
+      "bairro": "Tucuruvi",
+      "zona":  "Norte",
+      "casos": 69,
+      "obitos": 22
+    },
+    {
+      "id": 10,
+      "bairro": "Pirituba",
+      "zona":  "Norte",
+      "casos": 74,
+      "obitos": 23
+    },
+    {
+      "id": 11,
+      "bairro": "Freguesia do Ó",
+      "zona":  "Norte",
+      "casos": 75,
+      "obitos": 34
+    },
+    {
+      "id": 12,
+      "bairro": "Limão",
+      "zona":  "Norte",
+      "casos": 50,
+      "obitos": 29
+    },
+    {
+      "id": 13,
+      "bairro": "Casa Verde",
+      "zona":  "Norte",
+      "casos": 56,
+      "obitos": 25
+    },
+    {
+      "id": 14,
+      "bairro": "Santana",
+      "zona":  "Norte",
+      "casos": 119,
+      "obitos": 28
+    },
+    {
+      "id": 15,
+      "bairro": "Vila Guilherme",
+      "zona":  "Norte",
+      "casos": 31,
+      "obitos": 8
+    },
+    {
+      "id": 16,
+      "bairro": "Vila Medeiros",
+      "zona":  "Norte",
+      "casos": 44,
+      "obitos": 27
+    },
+    {
+      "id": 17,
+      "bairro": "Vila Maria",
+      "zona":  "Norte",
+      "casos": 44,
+      "obitos": 26
+    },
+    {
+      "id": 18,
+      "bairro": "São Domingos",
+      "zona":  "Norte",
+      "casos": 61,
+      "obitos": 12
+    },
+    {
+      "id": 19,
+      "bairro": "Itaim Paulista",
+      "zona":  "Leste",
+      "casos": 104,
+      "obitos": 21
+    },
+    {
+      "id": 20,
+      "bairro": "Vila Curuçá",
+      "zona":  "Leste",
+      "casos": 72,
+      "obitos": 19
+    },
+    {
+      "id": 21,
+      "bairro": "Lajeado",
+      "zona":  "Leste",
+      "casos": 67,
+      "obitos": 24
+    },
+    {
+      "id": 22,
+      "bairro": "Guaianases",
+      "zona":  "Leste",
+      "casos": 60,
+      "obitos": 20
+    },
+    {
+      "id": 23,
+      "bairro": "Cidade Tiradentes",
+      "zona":  "Leste",
+      "casos": 96,
+      "obitos": 37
+    },
+    {
+      "id": 24,
+      "bairro": "Iguatemi",
+      "zona":  "Leste",
+      "casos": 65,
+      "obitos": 31
+    },
+    {
+      "id": 25,
+      "bairro": "São Rafael",
+      "zona":  "Leste",
+      "casos": 37,
+      "obitos": 16
+    },
+    {
+      "id": 26,
+      "bairro": "Jardim Helena",
+      "zona":  "Leste",
+      "casos": 38,
+      "obitos": 15
+    },
+    {
+      "id": 27,
+      "bairro": "São Miguel",
+      "zona":  "Leste",
+      "casos": 52,
+      "obitos": 27
+    },
+    {
+      "id": 28,
+      "bairro": "Itaquera",
+      "zona":  "Leste",
+      "casos": 165,
+      "obitos": 35
+    },
+    {
+      "id": 29,
+      "bairro": "Parque do Carmo",
+      "zona":  "Leste",
+      "casos": 45,
+      "obitos": 11
+    },
+    {
+      "id": 30,
+      "bairro": "São Mateus",
+      "zona":  "Leste",
+      "casos": 92,
+      "obitos": 41
+    },
+    {
+      "id": 31,
+      "bairro": "Vila Jacuí",
+      "zona":  "Leste",
+      "casos": 41,
+      "obitos": 19
+    },
+    {
+      "id": 32,
+      "bairro": "Artur Alvim",
+      "zona":  "Leste",
+      "casos": 62,
+      "obitos": 30
+    },
+    {
+      "id": 33,
+      "bairro": "Cidade Líder",
+      "zona":  "Leste",
+      "casos": 81,
+      "obitos": 22
+    },
+    {
+      "id": 34,
+      "bairro": "Ermelino Matarazzo",
+      "zona":  "Leste",
+      "casos": 31,
+      "obitos": 24
+    },
+    {
+      "id": 35,
+      "bairro": "Ponte Rasa",
+      "zona":  "Leste",
+      "casos": 60,
+      "obitos": 22
+    },
+    {
+      "id": 36,
+      "bairro": "Cangaíba",
+      "zona":  "Leste",
+      "casos": 72,
+      "obitos": 32
+    },
+    {
+      "id": 37,
+      "bairro": "Penha",
+      "zona":  "Leste",
+      "casos": 103,
+      "obitos": 29
+    },
+    {
+      "id": 38,
+      "bairro": "Vila Matilde",
+      "zona":  "Leste",
+      "casos": 74,
+      "obitos": 23
+    },
+    {
+      "id": 39,
+      "bairro": "Aricanduva",
+      "zona":  "Leste",
+      "casos": 51,
+      "obitos": 17
+    },
+    {
+      "id": 40,
+      "bairro": "Sapopemba",
+      "zona":  "Leste",
+      "casos": 84,
+      "obitos": 51
+    },
+    {
+      "id": 41,
+      "bairro": "Tatuapé",
+      "zona":  "Leste",
+      "casos": 112,
+      "obitos": 18
+    },
+    {
+      "id": 42,
+      "bairro": "Carrão",
+      "zona":  "Leste",
+      "casos": 69,
+      "obitos": 17
+    },
+    {
+      "id": 43,
+      "bairro": "Vila Formosa",
+      "zona":  "Leste",
+      "casos": 72,
+      "obitos": 29
+    },
+    {
+      "id": 44,
+      "bairro": "São Lucas",
+      "zona":  "Leste",
+      "casos": 89,
+      "obitos": 35
+    },
+    {
+      "id": 45,
+      "bairro": "Belém",
+      "zona":  "Leste",
+      "casos": 44,
+      "obitos": 17
+    },
+    {
+      "id": 46,
+      "bairro": "Mooca",
+      "zona":  "Leste",
+      "casos": 91,
+      "obitos": 18
+    },
+    {
+      "id": 47,
+      "bairro": "Água Rasa",
+      "zona":  "Leste",
+      "casos": 73,
+      "obitos": 32
+    },
+    {
+      "id": 48,
+      "bairro": "Vila Prudente",
+      "zona":  "Leste",
+      "casos": 77,
+      "obitos": 21
+    },
+    {
+      "id": 49,
+      "bairro": "Brás",
+      "zona":  "Leste",
+      "casos": 28,
+      "obitos": 9
+    },
+    {
+      "id": 50,
+      "bairro": "Jaguara",
+      "zona":  "Oeste",
+      "casos": 18,
+      "obitos": 2
+    },
+    {
+      "id": 51,
+      "bairro": "Vila Leopoldina",
+      "zona":  "Oeste",
+      "casos": 58,
+      "obitos": 6
+    },
+    {
+      "id": 52,
+      "bairro": "Jaguaré",
+      "zona":  "Oeste",
+      "casos": 13,
+      "obitos": 7
+    },
+    {
+      "id": 53,
+      "bairro": "Rio Pequeno",
+      "zona":  "Oeste",
+      "casos": 80,
+      "obitos": 19
+    },
+    {
+      "id": 54,
+      "bairro": "Raposo Tavares",
+      "zona":  "Oeste",
+      "casos": 41,
+      "obitos": 7
+    },
+    {
+      "id": 55,
+      "bairro": "Lapa",
+      "zona":  "Oeste",
+      "casos": 82,
+      "obitos": 14
+    },
+    {
+      "id": 56,
+      "bairro": "Alto de Pinheiros",
+      "zona":  "Oeste",
+      "casos": 66,
+      "obitos": 11
+    },
+    {
+      "id": 57,
+      "bairro": "Butantã",
+      "zona":  "Oeste",
+      "casos": 28,
+      "obitos": 3
+    },
+    {
+      "id": 58,
+      "bairro": "Vila Sônia",
+      "zona":  "Oeste",
+      "casos": 88,
+      "obitos": 11
+    },
+    {
+      "id": 59,
+      "bairro": "Barra Funda",
+      "zona":  "Oeste",
+      "casos": 26,
+      "obitos": 3
+    },
+    {
+      "id": 60,
+      "bairro": "Perdizes",
+      "zona":  "Oeste",
+      "casos": 135,
+      "obitos": 19
+    },
+    {
+      "id": 61,
+      "bairro": "Pinheiros",
+      "zona":  "Oeste",
+      "casos": 118,
+      "obitos": 13
+    },
+    {
+      "id": 62,
+      "bairro": "Morumbi",
+      "zona":  "Oeste",
+      "casos": 297,
+      "obitos": 7
+    },
+    {
+      "id": 63,
+      "bairro": "Jardim Paulista",
+      "zona":  "Oeste",
+      "casos": 200,
+      "obitos": 11
+    },
+    {
+      "id": 64,
+      "bairro": "Itaim Bibi",
+      "zona":  "Oeste",
+      "casos": 164,
+      "obitos": 18
+    },
+    {
+      "id": 65,
+      "bairro": "Santa Cecília",
+      "zona":  "Centro",
+      "casos": 89,
+      "obitos": 18
+    },
+    {
+      "id": 66,
+      "bairro": "Consolação",
+      "zona":  "Centro",
+      "casos": 82,
+      "obitos": 14
+    },
+    {
+      "id": 67,
+      "bairro": "Bom Retiro",
+      "zona":  "Centro",
+      "casos": 18,
+      "obitos": 7
+    },
+    {
+      "id": 68,
+      "bairro": "República",
+      "zona":  "Centro",
+      "casos": 54,
+      "obitos": 7
+    },
+    {
+      "id": 69,
+      "bairro": "Sé",
+      "zona":  "Centro",
+      "casos": 34,
+      "obitos": 3
+    },
+    {
+      "id": 70,
+      "bairro": "Cambuci",
+      "zona":  "Centro",
+      "casos": 34,
+      "obitos": 9
+    },
+    {
+      "id": 71,
+      "bairro": "Liberdade",
+      "zona":  "Centro",
+      "casos": 99,
+      "obitos": 26
+    },
+    {
+      "id": 72,
+      "bairro": "Bela Vista",
+      "zona":  "Centro",
+      "casos": 207,
+      "obitos": 9
+    },
+    {
+      "id": 73,
+      "bairro": "Vila Mariana",
+      "zona":  "Sul",
+      "casos": 218,
+      "obitos": 23
+    },
+    {
+      "id": 74,
+      "bairro": "Moema",
+      "zona":  "Sul",
+      "casos": 183,
+      "obitos": 16
+    },
+    {
+      "id": 75,
+      "bairro": "Jabaquara",
+      "zona":  "Sul",
+      "casos": 152,
+      "obitos": 28
+    },
+    {
+      "id": 76,
+      "bairro": "Ipiranga",
+      "zona":  "Sul",
+      "casos": 80,
+      "obitos": 27
+    },
+    {
+      "id": 77,
+      "bairro": "Sacomã",
+      "zona":  "Sul",
+      "casos": 127,
+      "obitos": 36
+    },
+    {
+      "id": 78,
+      "bairro": "Cursino",
+      "zona":  "Sul",
+      "casos": 74,
+      "obitos": 19
+    },
+    {
+      "id": 79,
+      "bairro": "Campo Belo",
+      "zona":  "Sul",
+      "casos": 87,
+      "obitos": 17
+    },
+    {
+      "id": 80,
+      "bairro": "Santo Amaro",
+      "zona":  "Sul",
+      "casos": 94,
+      "obitos": 9
+    },
+    {
+      "id": 81,
+      "bairro": "Vila Andrade",
+      "zona":  "Sul",
+      "casos": 180,
+      "obitos": 10
+    },
+    {
+      "id": 82,
+      "bairro": "Campo Limpo",
+      "zona":  "Sul",
+      "casos": 111,
+      "obitos": 10
+    },
+    {
+      "id": 83,
+      "bairro": "Capão Redondo",
+      "zona":  "Sul",
+      "casos": 127,
+      "obitos": 33
+    },
+    {
+      "id": 84,
+      "bairro": "Jardim Ângela",
+      "zona":  "Sul",
+      "casos": 137,
+      "obitos": 23
+    },
+    {
+      "id": 85,
+      "bairro": "Parelheiros",
+      "zona":  "Sul",
+      "casos": 37,
+      "obitos": 12
+    },
+    {
+      "id": 86,
+      "bairro": "Marsilac",
+      "zona":  "Sul",
+      "casos": 0,
+      "obitos": 0
+    },
+    {
+      "id": 87,
+      "bairro": "Jardim São Luís",
+      "zona":  "Sul",
+      "casos": 135,
+      "obitos": 30
+    },
+    {
+      "id": 88,
+      "bairro": "Socorro",
+      "zona":  "Sul",
+      "casos": 24,
+      "obitos": 6
+    },
+    {
+      "id": 89,
+      "bairro": "Campo Grande",
+      "zona":  "Sul",
+      "casos": 65,
+      "obitos": 12
+    },
+    {
+      "id": 90,
+      "bairro": "Cidade Ademar",
+      "zona":  "Sul",
+      "casos": 108,
+      "obitos": 29
+    },
+    {
+      "id": 91,
+      "bairro": "Pedreira",
+      "zona":  "Sul",
+      "casos": 43,
+      "obitos": 12
+    },
+    {
+      "id": 92,
+      "bairro": "Cidade Dutra",
+      "zona":  "Sul",
+      "casos": 63,
+      "obitos": 34
+    },
+    {
+      "id": 93,
+      "bairro": "Grajaú",
+      "zona":  "Sul",
+      "casos": 104,
+      "obitos": 33
+    }
+  ]
+}
