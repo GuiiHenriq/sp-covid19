@@ -26,7 +26,7 @@
 
       <div class="casos">
         <h2>Casos</h2>
-        <ul class="casos-content">
+        <ul class="casos-content"> 
           <li v-for="(caso, index) in casos" :key="index">
             <p><span>Bairro:</span> {{caso.bairro}}</p>
             <p><span>Casos:</span> {{caso.casos}}</p>
@@ -63,8 +63,8 @@ export default {
       }
     },
     getCasos() {
-      api.get(`/bairros`).then(r => {
-        this.casos = r.data;
+      api.get(`/covid19.json`).then(r => {
+        this.casos = r.data.bairros;
       });
     },
     getValorMax() {
