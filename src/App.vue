@@ -7,6 +7,7 @@
     <Casos />
     <footer>
       <p>Os dados são coletados a partir do mapa divulgado pela Prefeitura Municipal de São Paulo</p>
+      <p>Fonte: <a href="https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/saude/PMSP_SMS_COVID19_Boletim%20Semanal_20200417_atualizado.pdf" target="_blank">Boletim Cidade de São Paulo</a></p>
       <a href="https://github.com/GuiiHenriq" target="_blank">Guilherme Henrique</a>
     </footer>
   </div>
@@ -75,18 +76,18 @@ header p {
 
 footer {
   box-shadow: 0px -4px 8px rgba(30, 60, 90, 0.1);
-  height: 10vh;
+  height: 12vh;
 }
 
 footer p {
   font-weight: bold;
   font-size: 18px;
+  margin-bottom: 10px;
 }
 
 footer a {
   text-decoration: underline;
   font-size: 18px;
-  margin-top: 8px;
 }
 
 .btn {
@@ -150,8 +151,11 @@ textarea:focus {
   header h1 {
     font-size: 26px;
   }
-
-  footer p{
+  footer {
+    height: auto;
+    padding: 10px 0;
+  }
+  footer p, footer p a{
     text-align: center;
     font-size: 16px;
   }

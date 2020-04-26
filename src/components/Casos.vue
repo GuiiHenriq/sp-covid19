@@ -37,7 +37,6 @@
             <p><span>Óbitos:</span> {{caso.obitos}}</p>
           </li>
         </ul>
-
         <ul class="casos-content-list" v-else>
           <section class="list-head">
             <li><p><span>Bairro</span></p></li>
