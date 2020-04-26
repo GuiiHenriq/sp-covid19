@@ -82,8 +82,8 @@ export default {
     },
     getCasos() {
       api.get(`/covid19.json`).then(r => {
-        this.casos = r.data.bairros;
-        //this.casos = r.data;
+        this.casos = r.data.bairros; //ARRAY JSON WEB
+        //this.casos = r.data; //ARRAY JSON LOCAL
       });
     },
     getValorMax() {
