@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <main>
     <div class="wrapper">
       <div class="infos">
         <h2>Infos</h2>
@@ -24,12 +24,17 @@
         Bairro: {{bairro}}
       </section>-->
 
-      <div class="casos">
-        <div>
-          <h2>Casos</h2>
-          <button @click="changeView = false" class="active"><img src="../assets/table.svg" alt="Visualizar no modo Cards"></button>
-          <button @click="changeView = true"><img src="../assets/list.svg" alt="Visualizar no modo Lista"></button>
-        </div>
+      <main class="casos">
+        <section>
+          <div>
+            <h2>Casos</h2>
+          </div>
+          <div>
+            <button @click="changeView = false" data-btn="list" class="active"><i class="fas fa-list-alt"></i></button>
+            <button @click="changeView = true" data-btn="table"><i class="fas fa-table"></i></button>
+          </div>
+        </section>
+
         <ul class="casos-content" v-if="changeView === false">
           <li v-for="(caso, index) in casos" :key="index">
             <p><span>Bairro:</span> {{caso.bairro}}</p>
@@ -38,20 +43,20 @@
           </li>
         </ul>
         <ul class="casos-content-list" v-else>
-          <section class="list-head">
+          <div class="list-head">
             <li><p><span>Bairro</span></p></li>
             <li><p><span>Casos</span></p></li>
             <li><p><span>Óbitos</span></p></li>
-          </section>
+          </div>
           <li v-for="(caso, index) in casos" :key="index" class="list-infos">
             <p>{{caso.bairro}}</p>
             <p>{{caso.casos}}</p>
             <p>{{caso.obitos}}</p>
           </li>
         </ul>
-      </div>
+      </main>
     </div>
-  </section>
+  </main>
 </template>
 
 <script>
@@ -95,6 +100,20 @@ export default {
       }
       this.totalCasos = sumCasos.toLocaleString();
       this.totalObitos = sumObitos.toLocaleString();
+    },
+    changeColor() {
+      const btnList = document.querySelector('button[data-btn="list"]');
+      const btnTable = document.querySelector('button[data-btn="table"]');
+
+      console.log(btnTable)
+      if(this.changeView === false) {
+        btnList.classList.add('active');
+        btnTable.classList.remove('active');
+      }
+      if(this.changeView === true) {
+        btnList.classList.remove('active');
+        btnTable.classList.add('active');
+      } 
     }
   },
   created() {
@@ -102,6 +121,9 @@ export default {
   },
   beforeUpdate() {
     this.getValorMax();
+  },
+  updated() {
+    this.changeColor();
   }
 }
 </script>
@@ -157,26 +179,19 @@ h2 {
   font-size: 18px;
 }
 
-.casos div {
+.casos section {
   display: flex;
+  justify-content: space-between;
 }
 
-.casos button {
-  margin-bottom: 12px;
-}
-
-.casos button.active img {
-  color: #706fd3;
-}
-
-.casos img {
-  display: block;
-  width: 34px;
+.casos i {
+  font-size: 32px;
   cursor: pointer;
+  color: #345;
 }
 
-.casos button:last-child img {
-  width: 40px;
+.casos button.active i {
+  color: #706fd3;
 }
 
 /* Table/Cards */
