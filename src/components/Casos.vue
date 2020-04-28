@@ -30,8 +30,8 @@
             <h2>Casos</h2>
           </div>
           <div>
-            <button @click="changeView = false" data-btn="list" class="active"><i class="fas fa-list-alt"></i></button>
-            <button @click="changeView = true" data-btn="table"><i class="fas fa-table"></i></button>
+            <button @click="changeView = false" data-btn="table" class="active"><i class="fas fa-table"></i></button>
+            <button @click="changeView = true" data-btn="list"><i class="fas fa-list-alt"></i></button>
           </div>
         </section>
 
@@ -104,16 +104,13 @@ export default {
     changeColor() {
       const btnList = document.querySelector('button[data-btn="list"]');
       const btnTable = document.querySelector('button[data-btn="table"]');
-
-      console.log(btnTable)
       if(this.changeView === false) {
+        btnList.classList.remove('active');
+        btnTable.classList.add('active');
+      } else {
         btnList.classList.add('active');
         btnTable.classList.remove('active');
       }
-      if(this.changeView === true) {
-        btnList.classList.remove('active');
-        btnTable.classList.add('active');
-      } 
     }
   },
   created() {
