@@ -20,20 +20,10 @@
           <input id="cep" name="cep" type="text" placeholder="Alto do Boa Vista" v-model="cep" @keyup="buscarCep">
         </form>
 
-        <section>
-          Bairro: {{bairro}}
-
-          <!--<ul>
-            <li v-for="(bairro, index) in searchBairro" :key="index">
-              <p><span>Bairro:</span> {{bairro.bairro}}</p>
-              <p><span>Casos:</span> {{bairro.casos}}</p>
-              <p><span>Óbitos:</span> {{bairro.obitos}}</p>
-            </li>
-          </ul>-->
-
-          <p>{{searchBairro}}</p>
-          <p>{{searchCasos}}</p>
-          <p>{{searchObitos}}</p>
+        <section v-if="!listBairros">
+          <p><span>Bairro:</span> {{searchBairro}}</p>
+          <p><span>Casos:</span> {{searchCasos}}</p>
+          <p><span>Óbitos:</span> {{searchObitos}}</p>
         </section>
       </main>
 
@@ -103,9 +93,9 @@ export default {
       }
     },
     getCasos() {
-      api.get(`/bairros`).then(r => {
-        //this.casos = r.data.bairros; //ARRAY JSON WEB
-        //this.casos = r.data; //ARRAY JSON LOCAL
+      api.get(`/covid19.json`).then(r => {
+        this.casos = r.data.bairros; // => PRODUCTION
+        //this.casos = r.data; // => DEVELOPMENT
       });
     },
     showBairro() {
@@ -207,6 +197,26 @@ h2 {
   font-size: 18px;
 }
 
+.search {
+  width: 100%;
+  margin: 30px 0 60px 0;
+}
+
+.search section {
+  padding: 22px 0 22px 12px;
+  width: 100%;
+  border-radius: 4px;
+  background: #fff;
+  border: 1px solid #dbe9f5;
+  box-shadow: 0 4px 6px 0 rgba(31,70,88,.04);
+  font-size: 18px;
+  letter-spacing: .5px;
+}
+
+.search section p span {
+  font-weight: bold;
+}
+
 .casos section {
   display: flex;
   justify-content: space-between;
@@ -293,11 +303,6 @@ h2 {
 .casos-content-list .list-infos p {
   width: 100%;
   text-align: center;
-}
-
-.search {
-  width: 100%;
-  margin: 30px 0 60px 0;
 }
 
 #busca {
