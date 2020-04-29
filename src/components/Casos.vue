@@ -15,14 +15,27 @@
         </section>
       </div>
 
-      <!--<form>
-        <label for="cep">Cep</label>
-        <input id="cep" name="cep" type="text" v-model="cep" @keyup="buscarCep">
-      </form>
+      <main class="search">
+        <form>
+          <input id="cep" name="cep" type="text" placeholder="Alto do Boa Vista" v-model="cep" @keyup="buscarCep">
+        </form>
 
-      <section>
-        Bairro: {{bairro}}
-      </section>-->
+        <section>
+          Bairro: {{bairro}}
+
+          <!--<ul>
+            <li v-for="(bairro, index) in searchBairro" :key="index">
+              <p><span>Bairro:</span> {{bairro.bairro}}</p>
+              <p><span>Casos:</span> {{bairro.casos}}</p>
+              <p><span>Óbitos:</span> {{bairro.obitos}}</p>
+            </li>
+          </ul>-->
+
+          <p>{{searchBairro}}</p>
+          <p>{{searchCasos}}</p>
+          <p>{{searchObitos}}</p>
+        </section>
+      </main>
 
       <main class="casos">
         <section>
@@ -68,11 +81,16 @@ export default {
     return {
       cep: '',
       bairro: '',
+      casoPorBairro: '',
       casos: null,
       valores: '',
       totalCasos: '',
       totalObitos: '',
-      changeView: false
+      changeView: false,
+      listBairros: [],
+      searchBairro: '',
+      searchCasos: '',
+      searchObitos: '',
     };
   },
   methods: {
@@ -85,10 +103,22 @@ export default {
       }
     },
     getCasos() {
-      api.get(`/covid19.json`).then(r => {
-        this.casos = r.data.bairros; //ARRAY JSON WEB
+      api.get(`/bairros`).then(r => {
+        //this.casos = r.data.bairros; //ARRAY JSON WEB
         //this.casos = r.data; //ARRAY JSON LOCAL
       });
+    },
+    showBairro() {
+      for(let i = 0; i < this.casos.length; i++){
+        this.listBairros.push(this.casos[i]);
+      }
+
+      const result = this.listBairros.find(list => list.bairro === this.bairro);
+      if(result) {
+        this.searchBairro = result.bairro;
+        this.searchCasos = result.casos;
+        this.searchObitos = result.obitos
+      }
     },
     getValorMax() {
       let sumCasos = 0;
@@ -118,6 +148,7 @@ export default {
   },
   beforeUpdate() {
     this.getValorMax();
+    this.showBairro();
   },
   updated() {
     this.changeColor();
@@ -264,10 +295,9 @@ h2 {
   text-align: center;
 }
 
-form {
-  max-width: 600px;
-  margin: 30px auto 60px auto;
-  position: relative;
+.search {
+  width: 100%;
+  margin: 30px 0 60px 0;
 }
 
 #busca {
