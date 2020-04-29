@@ -2,7 +2,7 @@
   <main>
     <div class="wrapper">
       <div class="infos">
-        <h2>Infos</h2>
+        <h2>Dados Gerais</h2>
         <section class="infos-content">
           <div>
             <p>Casos Confirmados</p>
@@ -16,11 +16,13 @@
       </div>
 
       <main class="search">
+        <h2>Procure seu bairro</h2>
         <form>
-          <input id="cep" name="cep" type="text" placeholder="Alto do Boa Vista" v-model="cep" @keyup="buscarCep">
+          <!--<input id="cep" name="cep" type="text" placeholder="Bela Vista" v-model="cep" @keyup="buscarCep">-->
+          <input id="cep" name="cep" type="text" placeholder="Bela Vista" v-model="bairros">
         </form>
 
-        <section v-if="!listBairros">
+        <section v-if="searchBairro">
           <p><span>Bairro:</span> {{searchBairro}}</p>
           <p><span>Casos:</span> {{searchCasos}}</p>
           <p><span>Óbitos:</span> {{searchObitos}}</p>
@@ -30,7 +32,7 @@
       <main class="casos">
         <section>
           <div>
-            <h2>Casos</h2>
+            <h2>Todos os casos</h2>
           </div>
           <div>
             <button @click="changeView = false" data-btn="table" class="active"><i class="fas fa-table"></i></button>
@@ -69,8 +71,9 @@ export default {
   name: 'Casos',
   data() {
     return {
-      cep: '',
-      bairro: '',
+      //cep: '',
+      //bairro: '',
+      bairros: '',
       casoPorBairro: '',
       casos: null,
       valores: '',
@@ -102,8 +105,7 @@ export default {
       for(let i = 0; i < this.casos.length; i++){
         this.listBairros.push(this.casos[i]);
       }
-
-      const result = this.listBairros.find(list => list.bairro === this.bairro);
+      const result = this.listBairros.find(list => list.bairro === this.bairros);
       if(result) {
         this.searchBairro = result.bairro;
         this.searchCasos = result.casos;
@@ -138,6 +140,7 @@ export default {
   },
   beforeUpdate() {
     this.getValorMax();
+    this.getCasos();
     this.showBairro();
   },
   updated() {
