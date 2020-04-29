@@ -96,7 +96,7 @@ export default {
       }
     },
     getCasos() {
-      api.get(`/covid19.json`).then(r => {
+      api.get(`/covid19.min.json`).then(r => {
         this.casos = r.data.bairros; // => PRODUCTION
         //this.casos = r.data; // => DEVELOPMENT
       });
