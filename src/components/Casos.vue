@@ -98,10 +98,7 @@ export default {
   computed: {
     searchBairro() {
       const searchString = this.bairros.trim();
-      return (
-        searchString &&
-        this.casos.find(({ bairro }) => bairro === this.bairros)
-      );
+      return (searchString && this.casos.find(({ bairro }) => bairro === this.bairros));
     },
     totais() {
       let sumCasos = 0;
@@ -110,7 +107,6 @@ export default {
         sumCasos = sumCasos + this.casos[i].casos;
         sumObitos = sumObitos + this.casos[i].obitos;
       }
-
       return {
         casos: sumCasos.toLocaleString(),
         obitos: sumObitos.toLocaleString()
@@ -129,7 +125,7 @@ export default {
     getCasos() {
       api.get(`/covid19.min.json`).then(r => {
         this.casos = r.data.bairros; // => PRODUCTION
-        // this.listBairros = r.data; // => DEVELOPMENT
+        //this.casos = r.data; // => DEVELOPMENT
       });
     },
     changeColor() {
