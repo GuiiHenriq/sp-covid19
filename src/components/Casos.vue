@@ -6,11 +6,11 @@
         <section class="infos-content">
           <div>
             <p>Casos Confirmados</p>
-            <h1>{{totalCasos}}</h1>
+            <h1>{{ totais.casos }}</h1>
           </div>
           <div>
             <p>Óbitos</p>
-            <h1>{{totalObitos}}</h1>
+            <h1>{{ totais.obitos }}</h1>
           </div>
         </section>
       </div>
@@ -19,13 +19,19 @@
         <h2>Procure seu bairro</h2>
         <form>
           <!--<input id="cep" name="cep" type="text" placeholder="Bela Vista" v-model="cep" @keyup="buscarCep">-->
-          <input id="cep" name="cep" type="text" placeholder="Bela Vista" v-model="bairros">
+          <input
+            id="cep"
+            name="cep"
+            type="text"
+            placeholder="Bela Vista"
+            v-model="bairros"
+          />
         </form>
 
         <section v-if="searchBairro">
-          <p><span>Bairro:</span> {{searchBairro}}</p>
-          <p><span>Casos:</span> {{searchCasos}}</p>
-          <p><span>Óbitos:</span> {{searchObitos}}</p>
+          <p><span>Bairro:</span> {{ searchBairro.bairro }}</p>
+          <p><span>Casos:</span> {{ searchBairro.casos }}</p>
+          <p><span>Óbitos:</span> {{ searchBairro.obitos }}</p>
         </section>
       </main>
 
@@ -35,28 +41,38 @@
             <h2>Todos os casos</h2>
           </div>
           <div>
-            <button @click="changeView = false" data-btn="table" class="active"><i class="fas fa-table"></i></button>
-            <button @click="changeView = true" data-btn="list"><i class="fas fa-list-alt"></i></button>
+            <button @click="changeView = false" data-btn="table" class="active">
+              <i class="fas fa-table"></i>
+            </button>
+            <button @click="changeView = true" data-btn="list">
+              <i class="fas fa-list-alt"></i>
+            </button>
           </div>
         </section>
 
         <ul class="casos-content" v-if="changeView === false">
-          <li v-for="(caso, index) in casos" :key="index">
-            <p><span>Bairro:</span> {{caso.bairro}}</p>
-            <p><span>Casos:</span> {{caso.casos}}</p>
-            <p><span>Óbitos:</span> {{caso.obitos}}</p>
+          <li v-for="caso in casos" :key="caso.bairro">
+            <p><span>Bairro:</span> {{ caso.bairro }}</p>
+            <p><span>Casos:</span> {{ caso.casos }}</p>
+            <p><span>Óbitos:</span> {{ caso.obitos }}</p>
           </li>
         </ul>
         <ul class="casos-content-list" v-else>
           <div class="list-head">
-            <li><p><span>Bairro</span></p></li>
-            <li><p><span>Casos</span></p></li>
-            <li><p><span>Óbitos</span></p></li>
+            <li>
+              <p><span>Bairro</span></p>
+            </li>
+            <li>
+              <p><span>Casos</span></p>
+            </li>
+            <li>
+              <p><span>Óbitos</span></p>
+            </li>
           </div>
-          <li v-for="(caso, index) in casos" :key="index" class="list-infos">
-            <p>{{caso.bairro}}</p>
-            <p>{{caso.casos}}</p>
-            <p>{{caso.obitos}}</p>
+          <li v-for="caso in casos" :key="caso.bairro" class="list-infos">
+            <p>{{ caso.bairro }}</p>
+            <p>{{ caso.casos }}</p>
+            <p>{{ caso.obitos }}</p>
           </li>
         </ul>
       </main>
@@ -68,106 +84,96 @@
 import { api, getCep } from "@/services.js";
 
 export default {
-  name: 'Casos',
+  name: "Casos",
   data() {
     return {
       //cep: '',
       //bairro: '',
-      bairros: '',
-      casoPorBairro: '',
-      casos: null,
-      valores: '',
-      totalCasos: '',
-      totalObitos: '',
-      changeView: false,
-      listBairros: [],
-      searchBairro: '',
-      searchCasos: '',
-      searchObitos: '',
+      bairros: "",
+      casoPorBairro: "",
+      casos: [],
+      changeView: false
     };
+  },
+  computed: {
+    searchBairro() {
+      const searchString = this.bairros.trim();
+      return (
+        searchString &&
+        this.casos.find(({ bairro }) => bairro === this.bairros)
+      );
+    },
+    totais() {
+      let sumCasos = 0;
+      let sumObitos = 0;
+      for (let i = 0; i < this.casos.length; i++) {
+        sumCasos = sumCasos + this.casos[i].casos;
+        sumObitos = sumObitos + this.casos[i].obitos;
+      }
+
+      return {
+        casos: sumCasos.toLocaleString(),
+        obitos: sumObitos.toLocaleString()
+      };
+    }
   },
   methods: {
     buscarCep() {
       const cep = this.cep.replace(/\D/g, "");
-      if(cep.length === 8) {
+      if (cep.length === 8) {
         getCep(cep).then(r => {
           this.bairro = r.data.bairro;
-        })
+        });
       }
     },
     getCasos() {
       api.get(`/covid19.min.json`).then(r => {
         this.casos = r.data.bairros; // => PRODUCTION
-        //this.casos = r.data; // => DEVELOPMENT
+        // this.listBairros = r.data; // => DEVELOPMENT
       });
-    },
-    showBairro() {
-      for(let i = 0; i < this.casos.length; i++){
-        this.listBairros.push(this.casos[i]);
-      }
-      const result = this.listBairros.find(list => list.bairro === this.bairros);
-      if(result) {
-        this.searchBairro = result.bairro;
-        this.searchCasos = result.casos;
-        this.searchObitos = result.obitos
-      }
-    },
-    getValorMax() {
-      let sumCasos = 0;
-      let sumObitos = 0;
-      for(let i = 0; i < this.casos.length; i++){
-        this.valores = this.casos[i].casos;
-        sumCasos = sumCasos + this.casos[i].casos;
-        sumObitos = sumObitos + this.casos[i].obitos;
-      }
-      this.totalCasos = sumCasos.toLocaleString();
-      this.totalObitos = sumObitos.toLocaleString();
     },
     changeColor() {
       const btnList = document.querySelector('button[data-btn="list"]');
       const btnTable = document.querySelector('button[data-btn="table"]');
-      if(this.changeView === false) {
-        btnList.classList.remove('active');
-        btnTable.classList.add('active');
+      if (this.changeView === false) {
+        btnList.classList.remove("active");
+        btnTable.classList.add("active");
       } else {
-        btnList.classList.add('active');
-        btnTable.classList.remove('active');
+        btnList.classList.add("active");
+        btnTable.classList.remove("active");
       }
     }
   },
   created() {
     this.getCasos();
   },
-  beforeUpdate() {
-    this.getValorMax();
-    this.getCasos();
-    this.showBairro();
-  },
   updated() {
     this.changeColor();
   }
-}
+};
 </script>
 
 <style scoped>
 .wrapper {
-   max-width: 960px;
-   margin-right:auto; 
-   margin-left: auto;
-   padding-right: 10px;
-   padding-left: 10px;
+  max-width: 960px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
-.casos, .infos {
+.casos,
+.infos {
   margin-top: 20px;
 }
 
 h2 {
   margin-bottom: 12px;
-  color: #706fd3
+  color: #706fd3;
 }
 
-.casos-content, .infos-content {
+.casos-content,
+.infos-content {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -184,7 +190,7 @@ h2 {
   border-radius: 4px;
   background: #fff;
   border: 1px solid #dbe9f5;
-  box-shadow: 0 4px 6px 0 rgba(31,70,88,.04);
+  box-shadow: 0 4px 6px 0 rgba(31, 70, 88, 0.04);
 }
 
 .infos div h1 {
@@ -211,9 +217,9 @@ h2 {
   border-radius: 4px;
   background: #fff;
   border: 1px solid #dbe9f5;
-  box-shadow: 0 4px 6px 0 rgba(31,70,88,.04);
+  box-shadow: 0 4px 6px 0 rgba(31, 70, 88, 0.04);
   font-size: 18px;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
 }
 
 .search section p span {
@@ -243,7 +249,7 @@ h2 {
   border-radius: 4px;
   background: #fff;
   border: 1px solid #dbe9f5;
-  box-shadow: 0 4px 6px 0 rgba(31,70,88,.04);
+  box-shadow: 0 4px 6px 0 rgba(31, 70, 88, 0.04);
   font-size: 18px;
   letter-spacing: 0.5px;
 }
@@ -274,7 +280,7 @@ h2 {
   padding: 10px;
   margin-bottom: 15px;
   background: #fff;
-  box-shadow: 0 4px 6px 0 rgba(31,70,88,.04);
+  box-shadow: 0 4px 6px 0 rgba(31, 70, 88, 0.04);
 }
 
 .list-head li {
@@ -291,7 +297,7 @@ h2 {
   border-radius: 0;
   margin: 0;
   padding: 10px;
-  box-shadow: 0 4px 6px 0 rgba(31,70,88,.04);
+  box-shadow: 0 4px 6px 0 rgba(31, 70, 88, 0.04);
   background: #fff;
   font-size: 18px;
   letter-spacing: 0.5px;
@@ -333,11 +339,12 @@ h2 {
 }
 
 @media only screen and (max-width: 768px) {
- .infos div, .casos li {
-   width: 100%;
- }
- .casos li:last-child {
-   text-align: left;
- }
+  .infos div,
+  .casos li {
+    width: 100%;
+  }
+  .casos li:last-child {
+    text-align: left;
+  }
 }
 </style>
