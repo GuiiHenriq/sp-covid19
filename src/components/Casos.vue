@@ -6,11 +6,11 @@
         <section class="infos-content">
           <div>
             <p>Casos Confirmados</p>
-            <h1>{{ totais.casos }}</h1>
+            <h1>{{totais.casos}}</h1>
           </div>
           <div>
             <p>Óbitos</p>
-            <h1>{{ totais.obitos }}</h1>
+            <h1>{{totais.obitos}}</h1>
           </div>
         </section>
       </div>
@@ -18,14 +18,15 @@
       <main class="search">
         <h2>Procure seu bairro</h2>
         <form>
-          <!--<input id="cep" name="cep" type="text" placeholder="Bela Vista" v-model="cep" @keyup="buscarCep">-->
           <input
-            id="cep"
-            name="cep"
+            id="search-bairro"
+            name="search-bairro"
             type="text"
             placeholder="Bela Vista"
             v-model="bairros"
+            @click.prevent=""
           />
+          <input type="submit" id="btn-search" value="Buscar" @click.prevent="">
         </form>
 
         <section v-if="searchBairro">
@@ -70,9 +71,9 @@
             </li>
           </div>
           <li v-for="caso in casos" :key="caso.bairro" class="list-infos">
-            <p>{{ caso.bairro }}</p>
-            <p>{{ caso.casos }}</p>
-            <p>{{ caso.obitos }}</p>
+            <p>{{caso.bairro}}</p>
+            <p>{{caso.casos }}</p>
+            <p>{{caso.obitos}}</p>
           </li>
         </ul>
       </main>
@@ -123,9 +124,9 @@ export default {
       }
     },
     getCasos() {
-      api.get(`/covid19.min.json`).then(r => {
-        this.casos = r.data.bairros; // => PRODUCTION
-        //this.casos = r.data; // => DEVELOPMENT
+      api.get(`/bairros`).then(r => {
+        //this.casos = r.data.bairros; // => PRODUCTION
+        this.casos = r.data; // => DEVELOPMENT
       });
     },
     changeColor() {
@@ -310,6 +311,10 @@ h2 {
   text-align: center;
 }
 
+form {
+  position: relative;
+}
+
 #busca {
   width: 100%;
   padding: 20px;
@@ -321,9 +326,8 @@ h2 {
   transform: scale(1.1);
 }
 
-#lupa {
+#btn-search {
   width: 62px;
-  height: 62px;
   background: url("../assets/search.svg") no-repeat center center;
   text-indent: -150px;
   border: none;
@@ -334,6 +338,8 @@ h2 {
   box-shadow: none;
 }
 
+
+/* Mobile */
 @media only screen and (max-width: 768px) {
   .infos div,
   .casos li {
