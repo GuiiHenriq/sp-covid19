@@ -124,9 +124,9 @@ export default {
       }
     },
     getCasos() {
-      api.get(`/bairros`).then(r => {
-        //this.casos = r.data.bairros; // => PRODUCTION
-        this.casos = r.data; // => DEVELOPMENT
+      api.get(`/covid19.min.json`).then(r => {
+        this.casos = r.data.bairros; // => PRODUCTION
+        //this.casos = r.data; // => DEVELOPMENT
       });
     },
     changeColor() {

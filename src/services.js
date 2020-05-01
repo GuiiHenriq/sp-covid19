@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  //baseURL: "https://covid19-sp.netlify.app" // => PRODUCTION
-  baseURL: "http://localhost:3000" // => DEVELOPMENT
+  baseURL: "https://covid19-sp.netlify.app" // => PRODUCTION
+  //baseURL: "http://localhost:3000" // => DEVELOPMENT
 });
 
 export const api = {
