@@ -148,6 +148,7 @@ textarea:focus {
   border-color: #87f;
 }
 
+/* Mobile */
 @media only screen and (max-width: 768px) {
   header h1 {
     font-size: 26px;
@@ -160,5 +161,24 @@ textarea:focus {
     text-align: center;
     font-size: 16px;
   }
+}
+
+/* Dark Theme Browser/System */
+@media screen and (prefers-color-scheme: dark) {
+  body, header, footer {
+    background: #222831 !important;
+  }
+
+  header h1, header p, footer, footer a, .casos i {
+    color: #ececec !important;
+  }
+
+  h2 {
+    color: #f2a365 !important;
+  }
+
+  .casos button.active i {
+    color: #f2a365 !important;
+  } 
 }
 </style>
