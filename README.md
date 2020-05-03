@@ -20,5 +20,9 @@ Este projeto foi desenvolvido com VueJS, na prática para aprender ainda mais so
 Nosso JSON está sendo consumido através do Netlify, para rodar o projeto local recomendamos que utilize [Json Server](https://github.com/typicode/json-server) e rode o json que se encontra dentro da pasta **/public**
 É necessário alterar os paths e a o caminho do array no getAxios
 
+# Features em Desenvolvimento (03/05/20)
+- Gráfico baseado na região.
+- Melhorias no tamanho do projeto
+
 # Dúvidas
 Qualquer dúvida entre em contato conosco ou então abra um PR.
