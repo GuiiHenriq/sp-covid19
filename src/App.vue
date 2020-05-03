@@ -163,7 +163,7 @@ textarea:focus {
   }
 }
 
-/* Dark Theme Browser/System */
+/* Dark Theme Browser/System 
 @media screen and (prefers-color-scheme: dark) {
   body, header, footer {
     background: #222831 !important;
@@ -180,5 +180,5 @@ textarea:focus {
   .casos button.active i {
     color: #f2a365 !important;
   } 
-}
+}*/
 </style>
