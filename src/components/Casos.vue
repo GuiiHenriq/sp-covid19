@@ -144,9 +144,6 @@ export default {
   created() {
     this.getCasos();
   },
-  mounted() {
-    alert('A Prefeitura Municipal de São Paulo divulgou um novo boletim com novos dados!\nEstamos atualizando nossa base de dados - 30/04/2020')
-  },
   updated() {
     this.changeColor();
   }
