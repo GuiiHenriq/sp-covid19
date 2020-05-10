@@ -24,5 +24,5 @@ Nosso JSON está sendo consumido através do Netlify, para rodar o projeto local
 Qualquer dúvida entre em contato conosco ou então abra um PR.
 
 **Features em Desenvolvimento**
-- Gráfico baseado na região.
-- Melhorias no tamanho do projeto
+- Gráfico baseado na região;
+- Melhorias no tamanho do projeto.
