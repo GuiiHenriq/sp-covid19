@@ -2,12 +2,12 @@
   <div id="app">
     <header>
       <div><h1>Covid-19 | São Paulo</h1></div>
-      <div><p>Última Atualização: 30/04/2020</p></div>
+      <div><p>Última Atualização: 29/05/2020</p></div>
     </header>
     <Casos />
     <footer>
       <p>Os dados são coletados a partir do mapa divulgado pela Prefeitura Municipal de São Paulo</p>
-      <p>Fonte: <a href="https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/saude/PMSP_SMS_COVID19_Boletim%20Quinzenal_20200430.pdf" target="_blank">Boletim Cidade de São Paulo</a></p>
+      <p>Fonte: <a href="https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/saude/COVID19_Relatorio_SItuacional_SMS_20200529.pdf" target="_blank">Boletim Cidade de São Paulo</a></p>
       <a href="https://github.com/GuiiHenriq" target="_blank">Guilherme Henrique</a>
     </footer>
   </div>
